@@ -1,12 +1,25 @@
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const { UserLogin } = require("../../../models");
+const { UserRegister } = require("../../../models/user");
 
 module.exports = {
-  loginStudent: async (req, res) => {
+  getAllUserRegister: async (req, res) => {
+    const register = await UserRegister.find({});
+
     try {
-      const user = await UserLogin.findOne({ email: req.body.email });
+      res.json({
+        message: "success get all user",
+        register,
+      });
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  },
+
+  postUserLogin: async (req, res) => {
+    try {
+      const user = await UserRegister.findOne({ email: req.body.email });
       if (user) {
         const pass = bcrypt.compareSync(req.body.password, user.password);
         if (pass) {
