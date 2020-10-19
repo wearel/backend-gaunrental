@@ -36,7 +36,7 @@ module.exports = {
         register,
       });
     } catch (err) {
-      res.statu(500).send(err);
+      res.status(500).send(err);
     }
   },
 };
