@@ -1,5 +1,5 @@
-const Bookings = require("./bookings");
+const Booking = require("./bookings");
 
 module.exports = {
-  Bookings,
+  Booking,
 };

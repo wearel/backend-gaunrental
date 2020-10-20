@@ -1,27 +1,12 @@
-require("dotenv").config();
-const URI = process.env.DB_LIVE;
-var mongoose = require("mongoose"),
-  Schema = mongoose.Schema,
-  autoIncrement = require("mongoose-auto-increment");
+const mongoose = require('mongoose')
 
-var connection = mongoose.createConnection(URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-});
-
-autoIncrement.initialize(connection);
-
-const TransfersSchema = Schema({
-  // _id: {
-  //   type: Number,
-  // },
-  method: {
+const transferSchema = new mongoose.Schema({
+  nameMethod: {
     type: String,
     required: true,
   },
-  name: {
-    type: Number,
+  nomorRekening: {
+    type: String,
     required: true,
   },
   imgUrl: {
@@ -30,12 +15,7 @@ const TransfersSchema = Schema({
   },
 });
 
-TransfersSchema.plugin(autoIncrement.plugin, {
-  model: "id",
-  startAt: 1,
-  incrementBy: 1,
-});
 
-const Transfers = mongoose.model("transfers", TransfersSchema);
+const Transfer = mongoose.model("transfers", transferSchema);
 
-module.exports = Transfers;
+module.exports = Transfer;

@@ -1,53 +1,51 @@
-require("dotenv").config();
-const URI = process.env.DB_LIVE;
-var mongoose = require("mongoose"),
-  Schema = mongoose.Schema,
-  autoIncrement = require("mongoose-auto-increment");
+const mongoose = require("mongoose");
 
-var connection = mongoose.createConnection(URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-});
-
-autoIncrement.initialize(connection);
-
-const BookingsSchema = Schema({
-  // _id: {
-  //   type: Number,
-  // },
-  bookingStart: {
+const bookingSchema = new mongoose.Schema({
+  bookingStartDate: {
     type: Date,
     required: true,
   },
-  bookingEnd: {
+  bookingEndDate: {
     type: Date,
     required: true,
   },
-  status: {
-    type: Boolean,
-    required: true,
+  productId : {
+    _id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'products',
+      required: true,
+    },
+    nameProduct: {
+      type: String,
+      required: true,
+    },
+    price : {
+      type: Number,
+      required: true,
+    },
+    duration: {
+      type: Number,
+      required: true,
+    }
   },
-  address: {
-    type: String,
+  total: {
+    type: Number,
+    required: true,
   },
   userId: {
-    type: Number,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user-register',
+    required: true,
   },
-  productId: {
-    type: Number,
+  bankId : {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'banks'
   },
-  transferId: {
-    type: Number,
-  },
+  status : {
+    type: String,
+    default: 'Proses'
+  }
 });
 
-BookingsSchema.plugin(autoIncrement.plugin, {
-  model: "id",
-  startAt: 1,
-  incrementBy: 1,
-});
-
-const Bookings = mongoose.model("bookings", BookingsSchema);
-
-module.exports = Bookings;
+const Booking = mongoose.model('bookings', bookingSchema);
+module.exports = Booking;

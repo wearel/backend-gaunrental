@@ -29,10 +29,10 @@ module.exports = {
             token,
           });
         } else {
-          res.json("wrong password");
+          res.status(400).json("wrong password");
         }
       } else {
-        res.json("user not found");
+        res.status(400).json("user not found");
       }
     } catch (err) {
       console.log(err);
