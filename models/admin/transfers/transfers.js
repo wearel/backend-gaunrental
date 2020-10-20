@@ -8,11 +8,7 @@ const transferSchema = new mongoose.Schema({
   nomorRekening: {
     type: String,
     required: true,
-  },
-  imgUrl: {
-    type: String,
-    required: true,
-  },
+  }
 });
 
 
