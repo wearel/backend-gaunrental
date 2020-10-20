@@ -27,4 +27,26 @@ module.exports = {
       res.status(500).send(err);
     }
   },
+
+  getBookingById: async (req, res) => {
+    const booking = await Bookings.findById(req.params.id);
+
+    try {
+      res.json({
+        message: "Get Data By id",
+        booking,
+      });
+    } catch (error) {
+      res.status(404).send(`Data is ${error}`);
+    }
+  },
+
+  deleteBooking: async (req, res) => {
+    await Bookings.findByIdAndRemove(req.params.id);
+    try {
+      res.json({
+        message: "Delete Success",
+      });
+    } catch (error) {}
+  },
 };
