@@ -14,28 +14,10 @@ seeder.connect('mongodb+srv://root:root@cluster0.sbzlz.mongodb.net/db-gaun?retry
   seeder.loadModels([
     './models/user',
     './models/admin/categories'
-    // './models/Item',
-    // './models/Feature',
-    // './models/Activity',
-    // './models/Member',
-    // './models/Image',
-    // './models/Member',
-    // './models/Booking',
-    // './models/Users'
+
   ]);
 
-//   seeder.loadModels([
-//     './models/Category',
-//     './models/Bank',
-//     './models/Item',
-//     './models/Feature',
-//     './models/Activity',
-//     './models/Member',
-//     './models/Image',
-//     './models/Member',
-//     './models/Booking',
-//     './models/Users'
-//   ]);
+
 
   // Clear specified collections
   seeder.clearModels(['user-register', 'categories'], function () {
