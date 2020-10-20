@@ -7,12 +7,12 @@ var cors = require('cors')
  
 
 var indexRouter = require("./routes/index");
-var userLoginRouter = require("./routes/user/user-login");
-var userRegisterRouter = require("./routes/user/user-register");
-var adminProductsRouter = require("./routes/admin/products");
-var adminBookingsRouter = require("./routes/admin/bookings");
-var adminTransfersRouter = require("./routes/admin/transfers");
-
+var loginRouter = require("./routes/user/user-login");
+var registerRouter = require("./routes/user/user-register");
+var bookingRoute = require("./routes/admin/bookings");
+var categoryRouter = require('./routes/admin/categories');
+var productRouter = require('./routes/admin/products');
+var transferRoute = require('./routes/admin/transfers');
 var app = express();
 app.use(cors())
 
@@ -23,10 +23,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/login", userLoginRouter);
-app.use("/register", userRegisterRouter);
-app.use("/products", adminProductsRouter);
-app.use("/bookings", adminBookingsRouter);
-app.use("/transfers", adminTransfersRouter);
+
+// for route  etc
+app.use('/', loginRouter);
+app.use('/', registerRouter);
+app.use('/', categoryRouter);
+app.use('/', productRouter);
+app.use('/', transferRoute)
+app.use('/', bookingRoute);
 
 module.exports = app;

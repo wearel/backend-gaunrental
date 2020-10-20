@@ -1,9 +1,9 @@
-require("dotenv").config();
 const { Bookings } = require("../../../models/admin/bookings");
 
 module.exports = {
   getAllBookings: async (req, res) => {
-    const booking = await Bookings.find({});
+    const booking = await Bookings.find().populate(
+      {path: 'productId userId transferId', select: 'nameProduct price name nameMethod'});
 
     try {
       res.json({

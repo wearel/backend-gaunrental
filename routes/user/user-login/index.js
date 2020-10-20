@@ -13,7 +13,7 @@ router.get('/me', auth, (req, res) => {
 });
 
 
-router.get("/", getAllUserRegister);
-router.post("/", postUserLogin);
+router.get("/user-register", getAllUserRegister);
+router.post("/login", postUserLogin);
 
 module.exports = router;

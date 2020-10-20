@@ -10,23 +10,12 @@ const bookingSchema = new mongoose.Schema({
     required: true,
   },
   productId : {
-    _id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'products',
-      required: true,
-    },
-    nameProduct: {
-      type: String,
-      required: true,
-    },
-    price : {
-      type: Number,
-      required: true,
-    },
-    duration: {
-      type: Number,
-      required: true,
-    }
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'products',
+  },
+  duration : {
+    type: Number,
+    required: true
   },
   total: {
     type: Number,
@@ -35,11 +24,10 @@ const bookingSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user-register',
-    required: true,
   },
-  bankId : {
+  transferId : {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'banks'
+    ref: 'transfers'
   },
   status : {
     type: String,
@@ -47,5 +35,5 @@ const bookingSchema = new mongoose.Schema({
   }
 });
 
-const Booking = mongoose.model('bookings', bookingSchema);
-module.exports = Booking;
+const Bookings = mongoose.model('bookings', bookingSchema);
+module.exports = Bookings;

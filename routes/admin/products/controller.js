@@ -1,15 +1,13 @@
-require("dotenv").config();
 const { Products } = require("../../../models/admin/products");
 
 module.exports = {
   getAllProducts: async (req, res) => {
-    const product = await Products.find({});
-
+    const product = await Products.find().populate({path: 'categoryId', select: 'name'}); 
     try {
       res.json({
         message: "success get all user",
         product,
-      });
+      })
     } catch (err) {
       res.status(500).send(err);
     }

@@ -3,7 +3,7 @@ const router = express.Router();
 
 const { getAllTransfers, postTransfers } = require("./controller");
 
-router.get("/", getAllTransfers);
-router.post("/", postTransfers);
+router.get("/transfer", getAllTransfers);
+router.post("/add-transfer", postTransfers);
 
 module.exports = router;

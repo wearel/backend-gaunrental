@@ -13,9 +13,9 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  imageId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'images',
+  imgUrl: {
+    type: String,
+   required: true,
   },
   categoryId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -24,6 +24,7 @@ const productSchema = new mongoose.Schema({
 });
 
 
-const Product = mongoose.model('products', productSchema);
+const Products = mongoose.model('products', productSchema);
 
-module.exports = Product;
+module.exports = Products;
+

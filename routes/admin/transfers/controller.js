@@ -1,4 +1,3 @@
-require("dotenv").config();
 const { Transfers } = require("../../../models/admin/transfers");
 
 module.exports = {
