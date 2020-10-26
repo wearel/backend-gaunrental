@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
 
 const bookingSchema = new mongoose.Schema({
-  // bookingStartDate: {
-  //   type: Date,
-  //   required: true,
-  // },
-  // bookingEndDate: {
-  //   type: Date,
-  //   required: true,
-  // },
+  bookingStartDate: {
+    type: Date,
+    required: true,
+  },
+  bookingEndDate: {
+    type: Date,
+    required: true,
+  },
   productId : {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'products',
@@ -36,4 +36,4 @@ const bookingSchema = new mongoose.Schema({
 });
 
 const Bookings = mongoose.model('bookings', bookingSchema);
-module.exports = Bookings;
+module.exports = {Bookings};
